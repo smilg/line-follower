@@ -77,7 +77,7 @@ void setSpeed(CmdParser *cmdParser) {  // "setSpeed LEFT|RIGHT 0-255"
     } else return;
 
     // make sure the speed is in a valid range - do nothing if it's invalid 
-    uint8_t numSpeed = speed.toInt();
+    int numSpeed = speed.toInt();
     if (numSpeed < 0 || numSpeed > 255) {
         return;
     }
