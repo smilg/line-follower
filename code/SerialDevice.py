@@ -174,14 +174,6 @@ def print_port_info(port: ListPortInfo) -> None:
     print('\thwid: {}'.format(port.hwid))
 
 
-if __name__ == '__main__':
-    # debug stuff, used to monitor the port when testing
-    dev = SerialDevice()
-    while True:
-        line = dev.read()
-        if len(line) > 0:
-            print(line, end='')
-
 def yesno_confirm(message: str) -> bool:
     '''
     confirm a yes or no command line input option with the user.
@@ -192,7 +184,16 @@ def yesno_confirm(message: str) -> bool:
     '''
     confirm_choice = ''
     while confirm_choice not in ('y', 'n'):
-        confirm_choice = input("{} (y/n) ".format(message)).lower().strip()
+        confirm_choice = input('{} (y/n) '.format(message)).lower().strip()
         if confirm_choice not in ('y', 'n'):
             print('please enter "y" or "n"')
     return confirm_choice == 'y'
+
+
+if __name__ == '__main__':
+    # debug stuff, used to monitor the port when testing
+    dev = SerialDevice()
+    while True:
+        line = dev.read()
+        if len(line) > 0:
+            print(line, end='')
