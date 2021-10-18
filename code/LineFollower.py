@@ -19,7 +19,7 @@ class LineFollower:
         return self._left_speed
     
     @left_speed.setter
-    def set_left_speed(self, speed: int) -> None:
+    def left_speed(self, speed: int) -> None:
         self.set_speed("LEFT", speed)
 
     @property
@@ -27,7 +27,7 @@ class LineFollower:
         return self._right_speed
     
     @right_speed.setter
-    def set_right_speed(self, speed: int) -> None:
+    def right_speed(self, speed: int) -> None:
         self.set_speed("RIGHT", speed)
 
     @property
@@ -35,7 +35,7 @@ class LineFollower:
         return self._left_state
     
     @left_state.setter
-    def set_left_state(self, state: str) -> None:
+    def left_state(self, state: str) -> None:
         self.set_state("LEFT", state)
 
     @property
@@ -43,7 +43,7 @@ class LineFollower:
         return self._right_state
     
     @right_state.setter
-    def set_right_state(self, state: str) -> None:
+    def right_state(self, state: str) -> None:
         self.set_state("RIGHT", state)
 
     def set_speed(self, motor: str, speed: int) -> None:
