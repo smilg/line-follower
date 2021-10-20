@@ -14,8 +14,8 @@ CmdParser cmdParser;
 // motor shield globals
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
-Adafruit_DCMotor *leftMotor = AFMS.getMotor(2);
-Adafruit_DCMotor *rightMotor = AFMS.getMotor(1);
+Adafruit_DCMotor *leftMotor = AFMS.getMotor(3);
+Adafruit_DCMotor *rightMotor = AFMS.getMotor(4);
 
 void readSensor(CmdParser *cmdParser) {  // "readSensor LEFT|RIGHT"
     // do nothing if the wrong number of params were received
@@ -24,9 +24,11 @@ void readSensor(CmdParser *cmdParser) {  // "readSensor LEFT|RIGHT"
     char *sensorParam = cmdParser->getCmdParam(1);
     // send the reading from the specified sensor over serial
     if(strcmp(sensorParam, "LEFT") == 0) {
-        Serial.println("LEFTSENSOR="+analogRead(LEFT_SENSOR));
+        Serial.print("LEFTSENSOR=");
+        Serial.println(analogRead(LEFT_SENSOR));
     } else if (strcmp(sensorParam,  "RIGHT") == 0) {
-        Serial.println("RIGHTSENSOR="+analogRead(RIGHT_SENSOR));
+        Serial.print("RIGHTSENSOR=");
+        Serial.println(analogRead(RIGHT_SENSOR));
     }
 }
 
@@ -95,7 +97,7 @@ void setup() {
         while (1);
     }
 
-    Serial.println("Motor Shield found.");
+    // Serial.println("Motor Shield found.");
 
     // make sure robot doesn't go until it's told to
     leftMotor->setSpeed(0);
