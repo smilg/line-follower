@@ -12,12 +12,12 @@ LEFT_THRESHOLD = 200
 RIGHT_THRESHOLD = 200
 
 # sensor bounds - the lowest and highest values read during calibration
-LEFT_MIN = 114
-LEFT_MAX = 362
-RIGHT_MIN = 99
-RIGHT_MAX = 359
+LEFT_MIN = 70
+LEFT_MAX = 432
+RIGHT_MIN = 59
+RIGHT_MAX = 430
 
-Kp = .3         # proportionality constant for P control - multiplied by error to get a motor speed adjustment
+Kp = .1         # proportionality constant for P control - multiplied by error to get a motor speed adjustment
 driving = False # 
 kill = False    # used to stop the control thread and save the collected data as a .csv
 
@@ -177,12 +177,12 @@ def main():
     drive_thread.start()
     try: 
         while True:
-            choice = input('0: stop/start robot\n\
-                            k=[number]: set a new Kp value\n\
-                            s=[number]: set a new base speed value\n\
-                            min=[number]: set a new minimum speed value\n\
-                            max=[number]: set a new maximum speed value\n\
-                            Choose one: ')
+            choice = input('0: stop/start robot\n'+
+                            'k=[number]: set a new Kp value\n'+
+                            's=[number]: set a new base speed value\n'+
+                            'min=[number]: set a new minimum speed value\n'+
+                            'max=[number]: set a new maximum speed value\n'+
+                            'Choose one: ')
             try:    # whole thing wrapped in try/except to catch errors from bad input
                 if choice == '0':
                     driving = not driving   # toggle driving state
