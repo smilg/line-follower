@@ -1,4 +1,5 @@
 from SerialDevice import SerialDevice
+from time import sleep
 
 class LineFollower:
     STATES = ('FORWARD', 'BACKWARD', 'RELEASE') # 'release' stops the motor (it does not brake)
@@ -9,6 +10,7 @@ class LineFollower:
 
     def __init__(self) -> None:
         self.dev = SerialDevice()
+        sleep(2)
         self._left_speed = 0
         self._right_speed = 0
         self._left_state = 'RELEASE'
